@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.6)
 
+SET(CMAKE_MAKE_PROGRAM /usr/local/bin/ninja)
+
 set(CMAKE_VERBOSE_MAKEFILE on)
 set(libs "${CMAKE_SOURCE_DIR}/libs")
 include_directories(${CMAKE_SOURCE_DIR}/src/main/cpp/include)
@@ -15,6 +17,10 @@ set_target_properties(libopencv_java3 PROPERTIES
 add_library(libopencv_calib3d STATIC IMPORTED )
 set_target_properties(libopencv_calib3d PROPERTIES
     IMPORTED_LOCATION "${libs}/${ANDROID_ABI}/libopencv_calib3d.a")
+
+add_library(libopencv_dnn STATIC IMPORTED )
+set_target_properties(libopencv_dnn PROPERTIES
+    IMPORTED_LOCATION "${libs}/${ANDROID_ABI}/libopencv_dnn.a")
 
 add_library(libopencv_core STATIC IMPORTED )
 set_target_properties(libopencv_core PROPERTIES
